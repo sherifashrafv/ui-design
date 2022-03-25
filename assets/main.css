@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Cairo-Regular';
+  src: url('Fonts/Font/Cairo-Regular.ttf');
+}
+
+body {
+  font-family: 'Cairo-Regular' !important;
+}
