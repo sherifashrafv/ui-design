@@ -3,6 +3,14 @@
   src: url('Fonts/Font/Cairo-Regular.ttf');
 }
 
-body {
+body,
+html {
   font-family: 'Cairo-Regular' !important;
+  scroll-behavior: smooth;
+  text-align: right !important;
+}
+@media (min-width: 575px) {
+  .container {
+    max-width: 1367px !important;
+  }
 }

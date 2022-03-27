@@ -1,0 +1,11 @@
+{
+  "key": {
+    "langs": "languages",
+    "en": "انجليزي",
+    "ar": "عربي"
+  },
+  "signup": {
+    "new": "NewUser",
+    "login": "Login"
+  }
+}

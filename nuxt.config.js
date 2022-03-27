@@ -1,3 +1,4 @@
+import i18n from './config/i18n'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -5,27 +6,24 @@ export default {
     htmlAttrs: {
       lang: 'en',
     },
+
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/static/bootstrap/bootstrap.min.css' },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
-      {
-        src: '/static/bootstrap/bootstrap.bundle.min.js',
-        type: 'text/javascript',
-      },
+      // {
+      //   src: './assets/bootstrap/js/bootstrap.bundle.min.js',
+      //   type: 'text/javascript',
+      // },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['./assets/main.css'],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
@@ -42,7 +40,27 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    /* other modules */
+    [
+      'nuxt-i18n',
+      {
+        vueI18nLoader: true,
+        defaultLocale: 'عربيذ',
+        locales: [
+          {
+            code: 'en',
+            name: 'English',
+          },
+          {
+            code: 'عربي',
+            name: 'Arabic',
+          },
+        ],
+        vueI18n: i18n,
+      },
+    ],
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -50,6 +68,7 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

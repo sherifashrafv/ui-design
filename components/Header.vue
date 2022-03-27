@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="nav mt-4">
+    <nav class="nav mt-4 shadow-sm">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -13,7 +13,20 @@
                 <span class="icon-awesome">
                   <i class="fa-solid fa-earth-africa"></i>
                 </span>
-                <span> <strong>English</strong> </span>
+                <span>
+                  <b-nav-item-dropdown
+                    class="languages list-unstyled"
+                    :text="`${$i18n.locale}`"
+                    right
+                  >
+                    <b-dropdown-item @click="setlocale(`en`)">
+                      {{ $t('key.en') }}
+                    </b-dropdown-item>
+                    <b-dropdown-item @click="setlocale('عربي')">{{
+                      $t('key.ar')
+                    }}</b-dropdown-item>
+                  </b-nav-item-dropdown>
+                </span>
               </li>
               <li
                 class="item p-2 rounded-pill d-flex flex-row justify-content-between"
@@ -21,7 +34,85 @@
                 <span class="icon-awesome">
                   <i class="fa-solid fa-user-plus"></i>
                 </span>
-                <span> <strong>جديد</strong> </span>
+                <div>
+                  <b-button @click="modalShow = !modalShow">
+                    {{ $t('signup.new') }}</b-button
+                  >
+
+                  <b-modal v-model="modalShow">
+                    <div class="head text-center pt-0 p-5">
+                      <h4>سجل دخول بواسطة مواقع التواصل</h4>
+                      <hr />
+                      <ul class="social-links p-0 d-flex flex-column">
+                        <li
+                          class="google w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">google</span>
+                            <span class="icon-fa fa-brands fa-google"></span>
+                          </div>
+                        </li>
+
+                        <li
+                          class="twitter w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">twitter</span>
+                            <span class="icon-fa fa-brands fa-twitter"></span>
+                          </div>
+                        </li>
+
+                        <li
+                          class="facebook w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">twitter</span>
+                            <span class="fa-brands fa-facebook-square"></span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- login  -->
+                    <div class="head text-center pt-0 p-5">
+                      <h4>أو من خلال البريد الالكترونى</h4>
+                      <hr />
+
+                      <form class="form-action">
+                        <div class="mb-3">
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="email"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="password"
+                          />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          Submit
+                        </button>
+                      </form>
+                      <h6 class="mt-4 sign-up-nuxt-link">
+                        جديد فى فورسيرف ؟
+                        <nuxt-link role="button" tag="span" to="signup">
+                          تسجيل</nuxt-link
+                        >
+                      </h6>
+                    </div>
+                  </b-modal>
+                </div>
               </li>
               <li
                 class="item p-2 rounded-pill d-flex flex-row justify-content-between"
@@ -29,7 +120,85 @@
                 <span class="icon-awesome">
                   <i class="fa-solid fa-user"></i>
                 </span>
-                <span> <strong>تسجيل</strong> </span>
+                <div>
+                  <b-button @click="modalShow = !modalShow">
+                    {{ $t('signup.login') }}</b-button
+                  >
+
+                  <b-modal v-model="modalShow">
+                    <div class="head text-center pt-0 p-5">
+                      <h4>سجل دخول بواسطة مواقع التواصل</h4>
+                      <hr />
+                      <ul class="social-links p-0 d-flex flex-column">
+                        <li
+                          class="google w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">google</span>
+                            <span class="icon-fa fa-brands fa-google"></span>
+                          </div>
+                        </li>
+
+                        <li
+                          class="twitter w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">twitter</span>
+                            <span class="icon-fa fa-brands fa-twitter"></span>
+                          </div>
+                        </li>
+
+                        <li
+                          class="facebook w-100 d-flex flex-row justify-content-end text-center p-2"
+                        >
+                          <div
+                            class="finaly d-flex align-items-center flex-row justify-content-between"
+                          >
+                            <span class="text-center">twitter</span>
+                            <span class="fa-brands fa-facebook-square"></span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- login  -->
+                    <div class="head text-center pt-0 p-5">
+                      <h4>أو من خلال البريد الالكترونى</h4>
+                      <hr />
+
+                      <form class="form-action">
+                        <div class="mb-3">
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="email"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="password"
+                          />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          Submit
+                        </button>
+                      </form>
+                      <h6 class="mt-4 sign-up-nuxt-link">
+                        جديد فى فورسيرف ؟
+                        <nuxt-link role="button" tag="span" to="signup">
+                          تسجيل</nuxt-link
+                        >
+                      </h6>
+                    </div>
+                  </b-modal>
+                </div>
               </li>
             </ul>
           </div>
@@ -48,7 +217,7 @@
         </div>
       </div>
     </nav>
-    <nav class="navbar m-3 navbar-expand-lg navbar-light bg-light">
+    <nav ref="navbar" class="navbar m-3 navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a class="navbar-brand ml-4" href="#">منطقة العميل</a>
         <button
@@ -62,101 +231,52 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarSupportedContent"
+        >
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                الاستضافة
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                البرمجة
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                الحلول
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                من نحن
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
+            <b-nav-item-dropdown text="الاستضافة" right>
+              <b-dropdown-item href="#">من نحن</b-dropdown-item>
+              <b-dropdown-item href="#">فريقنا</b-dropdown-item>
+              <b-dropdown-item href="#">اتفاقية الخصوصية</b-dropdown-item>
+              <b-dropdown-item href="#">اتفاقية مستوي الخدمة</b-dropdown-item>
+            </b-nav-item-dropdown>
 
-            <nuxt-link tag="li" to="/child" class="nav-item">
+            <b-nav-item-dropdown text="البرمجة" right>
+              <b-dropdown-item href="#"
+                >النسخ الاحتياطي الخارجي</b-dropdown-item
+              >
+              <b-dropdown-item href="#">شهادات SSL</b-dropdown-item>
+              <b-dropdown-item href="#">حماية من ال-DDoS</b-dropdown-item>
+              <b-dropdown-item href="#">قواعد البيانات الموزعة</b-dropdown-item>
+              <b-dropdown-item href="#">حلول النشرة البريدية</b-dropdown-item>
+              <b-dropdown-item href="#">دعم المنتديات</b-dropdown-item>
+              <b-dropdown-item href="#">دعم ووردبريس</b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <nuxt-link
+              tag="li"
+              :to="localePath('/child', `${$i18n.locale}`)"
+              class="nav-item"
+            >
               <a class="nav-link active" aria-current="page" href="#"
                 >المدونة</a
               >
             </nuxt-link>
+
             <nuxt-link tag="li" to="/xx" class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
                 >اتصل بنا</a
               >
             </nuxt-link>
 
-            <nuxt-link tag="li" exact to="/" class="nav-item">
+            <nuxt-link
+              :to="localePath('/', `${$i18n.locale}`)"
+              tag="li"
+              exact
+              class="nav-item"
+            >
               <a class="nav-link active" aria-current="page" href="#"
                 >الرئيسية</a
               >
@@ -170,13 +290,52 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      modalShow: false,
+      scrolled: false,
+      windowTop: 0,
+    }
+  },
+
+  methods: {
+    setlocale(locale) {
+      localStorage.setItem('lang', locale)
+      this.$i18n.locale = locale
+      this.$router.push({
+        params: { lang: locale },
+      })
+    },
+    onScroll() {
+      this.$refs.navbar.classList.toggle('scroll-fixed', window.scrollY > 500)
+
+      // console.log(window.scrollY)
+      // console.log({ top: this.windowTop })
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll)
   },
 }
 </script>
 <style scoped>
-.nav {
+nav.navbar.m-3.navbar-expand-lg.navbar-light.bg-light {
+  transition: 0.3s ease-in-out !important;
+}
+nav.navbar.m-3.navbar-expand-lg.navbar-light.bg-light.scroll-fixed {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  left: 0 !important;
+  margin: 0 !important;
+  padding-top: 15px;
   box-shadow: -4px 7px 15px -9px #ececec;
+  z-index: 999999999999999;
+}
+.nav {
+  /* box-shadow: -4px 7px 15px -9px #ececec; */
 }
 .logo {
   gap: 10px;
@@ -195,6 +354,12 @@ export default {
   width: 127px;
   border: 1px solid #ececec;
   cursor: pointer;
+}
+.item div {
+  width: 100%;
+}
+.item li {
+  width: 100%;
 }
 .icon-awesome {
   position: relative;
@@ -229,35 +394,173 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
   transition: 0.5s;
   font-weight: bold;
 }
-.dropdown-toggle::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: '';
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
-  position: absolute;
-  top: 50%;
-  left: -23%;
-  transform: translate(0, -50%);
-}
+
 li.nav-item a {
   font-weight: bolder;
   font-size: 16px;
   color: #24273a !important;
 }
-li.nav-item.dropdown a {
-  position: relative;
-  transition: 0.5s;
-  color: #24273a;
-}
 li.nav-item.nuxt-link-exact-active.nuxt-link-active a {
   color: #fd9139 !important;
 }
 ul.navbar-nav.ml-auto.mb-2.mb-lg-0 {
-  width: 700px !important;
+  width: 734px !important;
   justify-content: space-between !important;
+}
+>>> .dropdown-toggle::after {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: -10%;
+}
+>>> .navbar-light .navbar-nav .nav-link {
+  outline: none;
+  font-weight: bolder;
+  font-size: 16px;
+  opacity: 1;
+  color: #24273a !important;
+}
+
+>>> ul.dropdown-menu.show {
+  position: absolute;
+  border-top: 3px solid #fd9139;
+  top: 59% !important;
+  text-align: right;
+}
+>>> .languages a {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+>>> .languages a::after {
+  display: none;
+}
+>>> .languages .nav-link {
+  font-weight: bold;
+  color: #24273a;
+  outline: none;
+}
+>>> button.btn.modal-sign-up.btn-secondary {
+  background: none !important;
+  outline: none;
+  border: none;
+  color: #24273a;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  width: 100%;
+}
+>>> button.btn.btn-secondary {
+  background: none;
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #24273a;
+}
+button.btn.btn-secondary:focus {
+  box-shadow: none;
+}
+.head hr {
+  height: 3px !important;
+  margin: 0px;
+  border: 0;
+  border-radius: 15px;
+  background-image: linear-gradient(
+    to right,
+    #24273a 0%,
+    #24273a 50%,
+    #fd9139 50%,
+    #fd9139 100%
+  );
+  margin: 20px 0px;
+  opacity: 1;
+}
+.finaly {
+  width: 200px;
+}
+.google {
+  background: #dd4b39;
+}
+.twitter {
+  background: #55acee;
+}
+.social-links {
+  gap: 15px;
+}
+.icon-fa {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  margin-right: 5px;
+}
+.facebook {
+  background: #3b5998;
+}
+.google,
+.twitter,
+.facebook {
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  height: 50px;
+}
+.social-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.social-links li:hover {
+  background-color: #fd9139;
+  color: #fff;
+}
+.form-action {
+  text-align: right !important;
+}
+.form-action div input {
+  border-radius: 50px;
+  outline: none;
+  color: #acacac;
+  border: 1px solid #e3e6e9;
+  text-align: right;
+  padding: 10px;
+}
+.form-action button {
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  border-radius: 50px;
+  transition: 0.5s;
+  background-color: transparent;
+  border: 1px dashed #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: #24273a;
+}
+.form-action button:hover {
+  background: #fff;
+  border-color: #24273a;
+  color: black;
+}
+>>> .modal {
+  background: rgb(36 39 58 / 46%) !important;
+}
+
+.sign-up-nuxt-link {
+  text-align: right;
+}
+.sign-up-nuxt-link span {
+  color: #fd9139;
+  font-weight: bold;
+}
+>>> button.close {
+  background: no-repeat;
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  border: none;
+}
+>>> .modal-footer {
+  display: none !important;
 }
 </style>
